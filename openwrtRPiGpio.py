@@ -104,11 +104,16 @@ class pin():
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
                 if self._reverse_state:
-                    print(str(not self._state))
-                    gpio_state_file.write(str(not self._state))
+                    if self._state:
+                        gpio_state_file.write("0")
+                    else :
+                        gpio_state_file.write("1")
                 else:
-                    print(str(self._state))
-                    gpio_state_file.write(str(self._state))
+                    if self._state:
+                        gpio_state_file.write("1")
+                    else :
+                        gpio_state_file.write("0")
+
                 gpio_state_file.flush()
             except: 
                 raise fileIOError
@@ -131,12 +136,11 @@ class pin():
             unexport_file.flush()
         except:
             raise fileIOError
-            exit()
 
     def write(self,state):
         if self._mode==INPUT:
             raise illegalUseOfClassMethod("The Pin is set INPUT")
-            exit()
+            return 1
         if(state==0 or state==1):
             self._state=state
             self.__pinOperation()
@@ -162,5 +166,5 @@ class pin():
     def read(self):
         if self._mode==OUTPUT:
             raise illegalUseOfClassMethod("The Pin is set OUTPUT")
-            exit()
+            return 1
         return self.__pinOperation()
