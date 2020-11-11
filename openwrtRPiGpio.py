@@ -102,7 +102,7 @@ class pin():
     def __pin_operation__(self):
         print("IN Operation ")
         if self._state==OUTPUT:
-            os.system("echo " + str(self._state)  + "> /sys/class/gpio/gpio{}/value".format(str(self._pin)))
+            os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
             
             # try:
             #     gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
