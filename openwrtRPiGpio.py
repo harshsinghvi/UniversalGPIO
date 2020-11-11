@@ -4,6 +4,9 @@ import os.path
 
 INPUT="in"
 OUTPUT="out"
+IN="in"
+OUT="out"
+
 ON=1
 OFF=0
 HIGH=1
@@ -194,8 +197,8 @@ class pin():
             return 1
         try:
             gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
-            read_value=int(gpio_direction_file.readline())
-            gpio_direction_file.close()
+            read_value=int(gpio_state_file.readline())
+            gpio_state_file.close()
         except:
             raise fileIOError
         return read_value
