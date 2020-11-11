@@ -13,7 +13,7 @@ class pin():
     ## _pin _mode _state _reverse_state _initial_state 
 
     def __init__(self,pin,mode,initial_state=0,reverse_state=False):  # check pin status and availability 
-        self.__system__init__(self)
+        self.__system__init__()
 
         if type(pin)==type(0):
             self._pin=pin+self._base
@@ -35,7 +35,7 @@ class pin():
         else: 
             raise invalidDataType("reverse_state Parameter can either be 1 / 0 or True / False ")
         try:
-            self.__gpio__init__(self)
+            self.__gpio__init__()
         except: 
             raise pinNumberError("Check the pin Number for your specific Model/Device")
             exit()
@@ -50,7 +50,7 @@ class pin():
         gpio_direction_file.write(self._mode)
         gpio_direction_file.flush()
 
-        self.__pinOperation(self)
+        self.__pinOperation()
 
     def __system__init__(self):
         if os.path.isdir("/sys/class/gpio/"):
