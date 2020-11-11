@@ -72,9 +72,14 @@ class pin():
             gpio_direction_file=open("/sys/class/gpio/gpio{}/direction".format(self._pin),'w')
             gpio_direction_file.write(self._mode)
             gpio_direction_file.flush()
-        except: 
+        except:
             raise fileIOError
             exit()
+        except OSError:            
+            print("Warning: Pin {} Was already in use and is now forced to be used in this program.".format(self._pin))
+            self.cleanup()
+            self.__gpio__init__() 
+
 
         self.__pinOperation()
 
@@ -92,7 +97,7 @@ class pin():
             raise KernelError("/sys/class/gpio/ not found: Please check the firmare")
 
     def __del__(self): 
-        self.cleanup(self)
+        self.cleanup()
     
     def __pinOperation(self):
         if self._state==OUTPUT:
@@ -127,7 +132,7 @@ class pin():
             exit()
 
     def write(self,state):
-        if mode==INPUT:
+        if self._mode==INPUT:
             raise illegalUseOfClassMethod("The Pin is set INPUT")
             exit()
         if(state==0 or state==1):
@@ -147,13 +152,13 @@ class pin():
         return self.__pinOperation()
 
     def state(self):
-        if mode==INPUT:
+        if self._mode==INPUT:
             raise illegalUseOfClassMethod("The Pin is set INPUT")
             exit()
         return self._state
 
     def read(self):
-        if mode==OUTPUT:
+        if self._mode==OUTPUT:
             raise illegalUseOfClassMethod("The Pin is set OUTPUT")
             exit()
         return self.__pinOperation()
