@@ -72,7 +72,7 @@ class pin():
         if self._state==OUTPUT:
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
-                if self._reverse_state
+                if self._reverse_state:
                     gpio_state_file.write(str(not self._state))
                 else:
                     gpio_state_file.write(str(self._state))
@@ -120,7 +120,7 @@ class pin():
         self._state=0
         return self.__pinOperation()
 
-    def state(self)
+    def state(self):
         if mode==INPUT:
             raise illegalUseOfClassMethod("The Pin is set INPUT")
             exit()

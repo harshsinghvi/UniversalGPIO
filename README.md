@@ -28,6 +28,7 @@ OPENWRT_DEVICE_PRODUCT="Generic"
 OPENWRT_DEVICE_REVISION="v0"
 OPENWRT_RELEASE="OpenWrt 19.07.4 r11208-ce6496d796"
 ```
+
 ## Refrences :
 - [https://openwrt.org/docs/techref/hardware/port.gpio](https://openwrt.org/docs/techref/hardware/port.gpio)
 
