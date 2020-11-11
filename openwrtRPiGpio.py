@@ -104,17 +104,17 @@ class pin():
         if self._state==OUTPUT:
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
-                if self._reverse_state:
-                    if self._state:
-                        gpio_state_file.write("0")
-                    else :
-                        gpio_state_file.write("1")
-                else:
-                    if self._state:
-                        gpio_state_file.write("1")
-                    else :
-                        gpio_state_file.write("0")
-
+                # if self._reverse_state:
+                #     if self._state:
+                #         gpio_state_file.write("0")
+                #     else :
+                #         gpio_state_file.write("1")
+                # else:
+                #     if self._state:
+                #         gpio_state_file.write("1")
+                #     else :
+                #         gpio_state_file.write("0")
+                gpio_state_file.write(str(self._state))    
                 gpio_state_file.flush()
             except: 
                 raise fileIOError
