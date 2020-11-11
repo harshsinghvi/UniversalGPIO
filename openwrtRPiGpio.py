@@ -33,7 +33,6 @@ class fileIOError(Exception):
 class illegalUseOfClassMethod(Exception):
     pass
 
-
 class pin():
     ## _pin _mode _state _reverse_state _initial_state 
 
@@ -202,3 +201,8 @@ class pin():
         except:
             raise fileIOError
         return read_value
+
+
+def setup(gpio_pin, mode,initial_state=0,reverse_state=False):
+    return pin(gpio_pin,mode,initial_state,reverse_state)
+    
