@@ -8,7 +8,29 @@ ON=1
 OFF=0
 HIGH=1
 LOW=0
- 
+
+class invalidPinNumber(Exception):
+    pass
+
+class invalidMode(Exception):
+    pass
+
+class invalidDataType(Exception):
+    pass
+
+class invalidState(Exception):
+    pass
+
+class KernelError(Exception):
+    pass
+
+class fileIOError(Exception):
+    pass
+
+class illegalUseOfClassMethod(Exception):
+    pass
+
+
 class pin():
     ## _pin _mode _state _reverse_state _initial_state 
 
@@ -37,18 +59,22 @@ class pin():
         try:
             self.__gpio__init__()
         except: 
-            raise pinNumberError("Check the pin Number for your specific Model/Device")
+            raise invalidPinNumber("Check the pin Number for your specific Model/Device")
             exit()
 
 
     def __gpio__init__(self):
-        export_file = open("/sys/class/gpio/export",'w')
-        export_file.write(str(self._pin))
-        export_file.flush()
+        try:
+            export_file = open("/sys/class/gpio/export",'w')
+            export_file.write(str(self._pin))
+            export_file.flush()
 
-        gpio_direction_file=open("/sys/class/gpio/gpio{}/direction".format(self._pin),'w')
-        gpio_direction_file.write(self._mode)
-        gpio_direction_file.flush()
+            gpio_direction_file=open("/sys/class/gpio/gpio{}/direction".format(self._pin),'w')
+            gpio_direction_file.write(self._mode)
+            gpio_direction_file.flush()
+        except: 
+            raise fileIOError
+            exit()
 
         self.__pinOperation()
 
