@@ -98,7 +98,7 @@ class pin():
 
     def __del__(self): 
         self.cleanup()
-    
+
     def __pin_operation__(self):
         if self._state==OUTPUT:
             try:
