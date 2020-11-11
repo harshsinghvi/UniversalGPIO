@@ -104,8 +104,10 @@ class pin():
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
                 if self._reverse_state:
+                    print(str(not self._state))
                     gpio_state_file.write(str(not self._state))
                 else:
+                    print(str(self._state))
                     gpio_state_file.write(str(self._state))
                 gpio_state_file.flush()
             except: 
@@ -143,11 +145,11 @@ class pin():
             raise invalidState("State can either be 1 / 0 or True / False ")
             exit()
 
-    def high():
+    def high(self):
         self._state=1
         return self.__pinOperation()
         
-    def low():
+    def low(self):
         self._state=0
         return self.__pinOperation()
 
