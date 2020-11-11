@@ -82,7 +82,7 @@ class pin():
             raise fileIOError
             exit()
         if self._mode == OUTPUT:
-            self.write()
+            self.write(self._state)
         else:
             self.read()
 
