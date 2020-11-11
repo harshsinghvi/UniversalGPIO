@@ -81,7 +81,7 @@ class pin():
             exit()
 
 
-        self.__pinOperation()
+        self.__pin_operation__()
 
     def __system__init__(self):
         if os.path.isdir("/sys/class/gpio/"):
@@ -99,7 +99,7 @@ class pin():
     def __del__(self): 
         self.cleanup()
     
-    def __pinOperation(self):
+    def __pin_operation__(self):
         if self._state==OUTPUT:
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
@@ -143,7 +143,7 @@ class pin():
             return 1
         if(state==0 or state==1):
             self._state=state
-            self.__pinOperation()
+            self.__pin_operation__()
             return 0
         else:
             raise invalidState("State can either be 1 / 0 or True / False ")
@@ -151,11 +151,11 @@ class pin():
 
     def high(self):
         self._state=1
-        return self.__pinOperation()
+        return self.__pin_operation__()
         
     def low(self):
         self._state=0
-        return self.__pinOperation()
+        return self.__pin_operation__()
 
     def state(self):
         if self._mode==INPUT:
@@ -167,4 +167,4 @@ class pin():
         if self._mode==OUTPUT:
             raise illegalUseOfClassMethod("The Pin is set OUTPUT")
             return 1
-        return self.__pinOperation()
+        return self.__pin_operation__()
