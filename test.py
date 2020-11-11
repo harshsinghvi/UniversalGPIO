@@ -1,4 +1,4 @@
-import openwrtRPiGPIO as GPIO
+import openwrtRPiGpio as GPIO
 from time import sleep
 
 pin=GPIO.pin(2,GPIO.OUTPUT)
