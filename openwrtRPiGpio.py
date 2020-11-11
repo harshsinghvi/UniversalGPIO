@@ -103,7 +103,7 @@ class pin():
         print("IN Operation ")
         if self._state==OUTPUT:
             os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
-                        os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
+                        # os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
                 
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
@@ -117,8 +117,8 @@ class pin():
                         gpio_state_file.write("1")
                     else :
                         gpio_state_file.write("0")
-                 gpio_state_file.flush()
-                 gpio_state_file.close()
+                gpio_state_file.flush()
+                gpio_state_file.close()
             except: 
                 raise fileIOError
                 exit()
@@ -163,8 +163,8 @@ class pin():
                         gpio_state_file.write("1")
                     else :
                         gpio_state_file.write("0")
-                 gpio_state_file.flush()
-                 gpio_state_file.close()
+                gpio_state_file.flush()
+                gpio_state_file.close()
             except: 
                 raise fileIOError
                 exit()
