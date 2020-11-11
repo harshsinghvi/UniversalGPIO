@@ -103,25 +103,26 @@ class pin():
         print("IN Operation ")
         if self._state==OUTPUT:
             os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
-            
-            # try:
-            #     gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
-            #     if self._reverse_state:
-            #         if self._state:
-            #             gpio_state_file.write("0")
-            #         else :
-            #             gpio_state_file.write("1")
-            #     else:
-            #         if self._state:
-            #             gpio_state_file.write("1")
-            #         else :
-            #             gpio_state_file.write("0")
-            #      gpio_state_file.flush()
-            #      gpio_state_file.close()
-            # except: 
-            #     raise fileIOError
-            #     exit()
-            # return 0
+                        os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
+                
+            try:
+                gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
+                if self._reverse_state:
+                    if self._state:
+                        gpio_state_file.write("0")
+                    else :
+                        gpio_state_file.write("1")
+                else:
+                    if self._state:
+                        gpio_state_file.write("1")
+                    else :
+                        gpio_state_file.write("0")
+                 gpio_state_file.flush()
+                 gpio_state_file.close()
+            except: 
+                raise fileIOError
+                exit()
+            return 0
         if self._state==INPUT:
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
@@ -149,8 +150,26 @@ class pin():
             return 1
         if(state==0 or state==1):
             self._state=state
-            self.__pin_operation__()
-            return 0
+            # self.__pin_operation__()
+            try:
+                gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
+                if self._reverse_state:
+                    if self._state:
+                        gpio_state_file.write("0")
+                    else :
+                        gpio_state_file.write("1")
+                else:
+                    if self._state:
+                        gpio_state_file.write("1")
+                    else :
+                        gpio_state_file.write("0")
+                 gpio_state_file.flush()
+                 gpio_state_file.close()
+            except: 
+                raise fileIOError
+                exit()
+            # return 0
+            #return 0
         else:
             raise invalidState("State can either be 1 / 0 or True / False ")
             exit()
