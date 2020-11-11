@@ -72,13 +72,13 @@ class pin():
             gpio_direction_file=open("/sys/class/gpio/gpio{}/direction".format(self._pin),'w')
             gpio_direction_file.write(self._mode)
             gpio_direction_file.flush()
-        except:
-            raise fileIOError
-            exit()
         except OSError:            
             print("Warning: Pin {} Was already in use and is now forced to be used in this program.".format(self._pin))
             self.cleanup()
-            self.__gpio__init__() 
+            self.__gpio__init__()
+        except:
+            raise fileIOError
+            exit()
 
 
         self.__pinOperation()
