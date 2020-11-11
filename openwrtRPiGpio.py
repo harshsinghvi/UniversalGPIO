@@ -100,6 +100,7 @@ class pin():
         self.cleanup()
 
     def __pin_operation__(self):
+        print("IN Operation ")
         if self._state==OUTPUT:
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'w')                
