@@ -4,6 +4,6 @@ Python Module for interfacing gpio pins on OpenWrt Firmware based Routers and Ne
 
 
 
+- [https://openwrt.org/docs/techref/hardware/port.gpio](https://openwrt.org/docs/techref/hardware/port.gpio)
 
 ## Refrences :
-- [https://openwrt.org/docs/techref/hardware/port.gpio](https://openwrt.org/docs/techref/hardware/port.gpio)
