@@ -62,16 +62,18 @@ class pin():
             raise invalidPinNumber("Check the pin Number for your specific Model/Device")
             exit()
 
-
     def __gpio__init__(self):
         try:
             export_file = open("/sys/class/gpio/export",'w')
             export_file.write(str(self._pin))
             export_file.flush()
+            except_file.close()
 
             gpio_direction_file=open("/sys/class/gpio/gpio{}/direction".format(self._pin),'w')
             gpio_direction_file.write(self._mode)
             gpio_direction_file.flush()
+            gpio_direction_file.close()
+
         except OSError:            
             print("Warning: Pin {} Was already in use and is now forced to be used in this program.".format(self._pin))
             self.cleanup()
@@ -79,9 +81,10 @@ class pin():
         except:
             raise fileIOError
             exit()
-
-
-        self.__pin_operation__()
+        if self._mode == OUTPUT:
+            self.write()
+        else:
+            self.read()
 
     def __system__init__(self):
         if os.path.isdir("/sys/class/gpio/"):
@@ -91,47 +94,48 @@ class pin():
                 f=re.search("^gpiochip.*",i)
                 if f != None:
                     gpchipfile.append(int(f.string[8:]))
-
-            self._base=int(open("/sys/class/gpio/gpiochip"+str(min(gpchipfile))+"/base",'r').read())
+            base_file=open("/sys/class/gpio/gpiochip"+str(min(gpchipfile))+"/base",'r')
+            self._base=int(base_file.read())
+            base_file.close()
         else:
             raise KernelError("/sys/class/gpio/ not found: Please check the firmare")
 
     def __del__(self): 
         self.cleanup()
 
-    def __pin_operation__(self):
-        print("IN Operation ")
-        if self._state==OUTPUT:
-            os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
-                        # os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
+    # def __pin_operation__(self):
+    #     print("IN Operation ")
+    #     if self._state==OUTPUT:
+    #         os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
+    #                     # os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
                 
-            try:
-                gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
-                if self._reverse_state:
-                    if self._state:
-                        gpio_state_file.write("0")
-                    else :
-                        gpio_state_file.write("1")
-                else:
-                    if self._state:
-                        gpio_state_file.write("1")
-                    else :
-                        gpio_state_file.write("0")
-                gpio_state_file.flush()
-                gpio_state_file.close()
-            except: 
-                raise fileIOError
-                exit()
-            return 0
-        if self._state==INPUT:
-            try:
-                gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
-                read_value=int(gpio_direction_file.readline())
-                gpio_direction_file.close()
-            except:
-                raise fileIOError
-                exit()
-            return read_value     
+    #         try:
+    #             gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
+    #             if self._reverse_state:
+    #                 if self._state:
+    #                     gpio_state_file.write("0")
+    #                 else :
+    #                     gpio_state_file.write("1")
+    #             else:
+    #                 if self._state:
+    #                     gpio_state_file.write("1")
+    #                 else :
+    #                     gpio_state_file.write("0")
+    #             gpio_state_file.flush()
+    #             gpio_state_file.close()
+    #         except: 
+    #             raise fileIOError
+    #             exit()
+    #         return 0
+    #     if self._state==INPUT:
+    #         try:
+    #             gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
+    #             read_value=int(gpio_direction_file.readline())
+    #             gpio_direction_file.close()
+    #         except:
+    #             raise fileIOError
+    #             exit()
+    #         return read_value     
 
     def cleanup(self):
         # try:
@@ -143,6 +147,7 @@ class pin():
         unexport_file = open("/sys/class/gpio/unexport",'w')
         unexport_file.write(str(self._pin))
         unexport_file.flush()
+        unexport_file.close()
 
     def write(self,state):
         if self._mode==INPUT:
@@ -150,7 +155,6 @@ class pin():
             return 1
         if(state==0 or state==1):
             self._state=state
-            # self.__pin_operation__()
             try:
                 gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
                 if self._reverse_state:
@@ -168,19 +172,15 @@ class pin():
             except: 
                 raise fileIOError
                 exit()
-            # return 0
-            #return 0
         else:
             raise invalidState("State can either be 1 / 0 or True / False ")
             exit()
 
     def high(self):
-        self._state=1
-        return self.__pin_operation__()
+        return self.write(HIGH)
         
     def low(self):
-        self._state=0
-        return self.__pin_operation__()
+        return self.write(LOW)
 
     def state(self):
         if self._mode==INPUT:
@@ -192,4 +192,10 @@ class pin():
         if self._mode==OUTPUT:
             raise illegalUseOfClassMethod("The Pin is set OUTPUT")
             return 1
-        return self.__pin_operation__()
+        try:
+            gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
+            read_value=int(gpio_direction_file.readline())
+            gpio_direction_file.close()
+        except:
+            raise fileIOError
+        return read_value
