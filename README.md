@@ -3,7 +3,7 @@
 Python Module for interfacing gpio pins on OpenWrt Firmware based Routers and Network Devices 
 
 **Testing on:**
-- Raspberry PI 3 model B+
+#### Raspberry PI 3 model B+
 - OpenWrt Version 19.07.4
 
 `/etc/os-reaease`
