@@ -2,7 +2,6 @@ import flask
 from flask_cors import CORS
 from flask import request, jsonify,render_template
 import os
-# import flask_monitoringdashboard as dashboard
 import OpenWRT.GPIO as GPIO
 
 PINS={
@@ -30,7 +29,6 @@ def gpio_cleanup():
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
-# dashboard.bind(app)
 
 @app.route('/hello-world',methods=['GET','POST'])
 def hello_world():
@@ -70,5 +68,4 @@ if __name__ == '__main__':
         pin_init()
         app.run(host="0.0.0.0",port=5000)
     except KeyboardInterrupt:
-        gpio_cleanup()
         exit()
