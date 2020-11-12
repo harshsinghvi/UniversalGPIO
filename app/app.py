@@ -1,9 +1,8 @@
 import flask
-from flask import request, jsonify
-import sqlite3
-import requests
+from flask_cors import CORS
+from flask import request, jsonify,render_template
 import os
-import flask_monitoringdashboard as dashboard
+# import flask_monitoringdashboard as dashboard
 import OpenWRT.GPIO as GPIO
 
 PINS={
@@ -28,36 +27,38 @@ def pin_init():
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-dashboard.bind(app)
+CORS(app)
+# dashboard.bind(app)
 
-@app.route('/hello-world',mothods=['GET','POST'])
+@app.route('/hello-world',methods=['GET','POST'])
 def hello_world():
     return "Hello World !!"
 
 @app.route('/status',methods=['GET'])
 def status():
     return relay_state
-@app.route('/status<relay>',methods=['GET'])
-def relay_status(relay)
+@app.route('/status/<relay>',methods=['GET'])
+def relay_status(relay):
     if relay in PINS:
-        return relay_state[relay]
+        return string(relay_state[relay])
     else:
         return "Bad Request",400
-@app.route('/set/<relay>/<state>',mothods=['GET','POST'])
+
+@app.route('/set',methods=['GET','POST'])
+def set():
+    if 'relay' in request.args and 'state' in request.args:
+        gpio[request.args["relay"]].write(request.args['state'])
+        relay_state[request.args['relay']]=request.args['state']
+        return "OK"
+    else:
+        return "Bad Request",400       
+@app.route('/set/<relay>/<state>',methods=['GET','POST'])
 def relay_set(relay,state):
     if (state == 1 or state == 0) and (relay in PINS):
         gpio[relay].write(state)
         relay_state[relay]=state
         return "OK"
     return "Bad Request",400
-@app.route('/set',methods=['GET','POST'])
-def set():
-    if 'relay' in request.args and 'status' in request.args:
-        gpio[request.args["relay"]].write(request.args['state'])
-        relay_state[request.args['relay']]=request.args['state']
-        return "OK"
-    else:
-        return "Bad Request",400
 @app.route('/',methods=['GET'])
 def home():
     return render_template('index.html')

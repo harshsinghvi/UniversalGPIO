@@ -18,7 +18,7 @@
 
 <body>
     <script>
-        const URL="http://openwrt.lan/";
+        const URL="http://openwrt.lan";
         var s1=0,s2=0,s3=0,s4=0;
         var f=1;
         const on="on";
@@ -78,13 +78,6 @@ async function api(){
 }
 api();
 
-function n(){
-    //document.getElementById("but1").innerHTML="xyz";
-    console.log("Hello World!!");
-    //document.getElementById("t").checked =true;
-    document.getElementById("myCheck").checked=true;
-}
-
 async function button(b){
     var s;
 
@@ -94,7 +87,7 @@ if(b=="R3"){ if(s3){ s3=0; }else{ s3=1; } s=s3}
 if(b=="R4"){ if(s4){ s4=0; }else{ s4=1; } s=s4}
 // console.log(s);
 
-    response= await fetch(URL+"set?relay="+b+"&state="+s);
+    response= await fetch(URL+"/set?relay="+b+"&state="+s);
     var status= await response.status;
     if(status==200){
       //window.location.href = "index.html";
