@@ -6,17 +6,17 @@ import os
 import OpenWRT.GPIO as GPIO
 
 PINS={
-    "R0": 2,
-    "R1": 3,
-    "R2": 14,
-    "R3": 15
+    "R1": 2,
+    "R2": 3,
+    "R3": 14,
+    "R4": 15
 }
 
 relay_state={
-    "R0":0,
     "R1":0,
     "R2":0,
     "R3":0,
+    "R4":0,
 }
 gpio={}
 
