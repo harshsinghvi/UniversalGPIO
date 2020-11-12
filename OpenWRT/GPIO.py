@@ -103,7 +103,8 @@ class pin():
             raise KernelError("/sys/class/gpio/ not found: Please check the firmare")
 
     def __del__(self): 
-        self.cleanup()
+        os.system("echo "+str(self._pin)+ " > /sys/class/gpio/unexport")
+        # self.cleanup()
 
     # def __pin_operation__(self):
     #     print("IN Operation ")
@@ -140,6 +141,7 @@ class pin():
     #         return read_value     
 
     def cleanup(self):
+        # os.system("echo "+str(self._pin)+ " > /sys/class/gpio/unexport")
         # unexport_file = open("/sys/class/gpio/unexport",'w')
         # unexport_file.write(str(self._pin))
         # unexport_file.flush()
