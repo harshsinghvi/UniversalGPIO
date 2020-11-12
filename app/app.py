@@ -23,7 +23,9 @@ gpio={}
 def pin_init():
     for p in PINS:
         gpio[p]=GPIO.setup(PINS[p],GPIO.OUTPUT,reverse_state=True,initial_state=0)
-
+def gpio_cleanup():
+        for p in PINS:
+            gpio[p].cleanup()
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -64,5 +66,9 @@ def home():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    pin_init()
-    app.run(host="0.0.0.0",port=5000)
+    try:
+        pin_init()
+        app.run(host="0.0.0.0",port=5000)
+    except KeyboardInterrupt:
+        gpio_cleanup()
+        exit()
