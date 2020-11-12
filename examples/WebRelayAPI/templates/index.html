@@ -6,13 +6,14 @@
         body {
                 color: #eee;
                 background: #121212;
+                font:  sans-serif;
             }
 
 
-        h1   {color: white;}
+        h1   {color: white;font-size: 500%;}
         h2  {color: red}
         p    {color: red;}
-
+        button { background-color: bisque; font: outline; font-size: 450%;min-width: 80%; text-emphasis: none; text-align: left;}
     </style>
 </head>
 
@@ -21,12 +22,12 @@
         const URL="http://openwrt.lan:5000";
         var s1=0,s2=0,s3=0,s4=0;
         var f=1;
-        const on="on";
-        const off="off";
-        const b1="Switch 1 is ";
-        const b2="Switch 2 is ";
-        const b3="Switch 3 is ";
-        const b4="Switch 4 is ";
+        const on="🟢 |";
+        const off="🔴 |";
+        const b1="⚡Primary Lamp";
+        const b2="💡Secondary Lamp";
+        const b3="🍭RGB";
+        const b4="🔌Switch 4";
 
 function hello(){
     console.log("Hello World!!");
@@ -39,23 +40,9 @@ function runfeed(){
         f=0;
         document.getElementById("feed").innerHTML="Running Feed"
         document.getElementById("feed").style="background:red";
-        setInterval(async function(){
-            const response =  await fetch(url);
-            var data = await  response.json();
-            s1=data["R1"];
-            s2=data["R2"];
-            s3=data["R3"];
-            s4=data["R4"];
-            if(data["R1"]){document.getElementById("b1").innerHTML=b1+on;} else { document.getElementById("b1").innerHTML=b1+off }
-            if(data["R2"]){document.getElementById("b2").innerHTML=b2+on;} else { document.getElementById("b2").innerHTML=b2+off }
-            if(data["R3"]){document.getElementById("b3").innerHTML=b3+on;} else { document.getElementById("b3").innerHTML=b3+off }
-            if(data["R4"]){document.getElementById("b4").innerHTML=b4+on;} else { document.getElementById("b4").innerHTML=b4+off }
-            console.log(data);
-
-        },1000)
+        setInterval(api,1000)
     }else{
         window.location.href = "index.html";
-
     }
 }
 
@@ -68,12 +55,10 @@ async function api(){
     s2=data["R2"];
     s3=data["R3"];
     s4=data["R4"];
-    //document.getElementById("b1").innerHTML=data['R1'];
-    if(data["R1"]){document.getElementById("b1").innerHTML=b1+on;} else { document.getElementById("b1").innerHTML=b1+off }
-    if(data["R2"]){document.getElementById("b2").innerHTML=b2+on;} else { document.getElementById("b2").innerHTML=b2+off }
-    if(data["R3"]){document.getElementById("b3").innerHTML=b3+on;} else { document.getElementById("b3").innerHTML=b3+off }
-    if(data["R4"]){document.getElementById("b4").innerHTML=b4+on;} else { document.getElementById("b4").innerHTML=b4+off }
-    //document.getElementById("ip").innerHTML=data['IP'];
+    if(data["R1"]){document.getElementById("b1").innerHTML=on+b1;} else { document.getElementById("b1").innerHTML=off+b1 }
+    if(data["R2"]){document.getElementById("b2").innerHTML=on+b2;} else { document.getElementById("b2").innerHTML=off+b2 }
+    if(data["R3"]){document.getElementById("b3").innerHTML=on+b3;} else { document.getElementById("b3").innerHTML=off+b3 }
+    if(data["R4"]){document.getElementById("b4").innerHTML=on+b4;} else { document.getElementById("b4").innerHTML=off+b4 }
     console.log(data);
 }
 api();
@@ -85,22 +70,19 @@ if(b=="R1"){ if(s1){ s1=0; }else{ s1=1; } s=s1}
 if(b=="R2"){ if(s2){ s2=0; }else{ s2=1; } s=s2}
 if(b=="R3"){ if(s3){ s3=0; }else{ s3=1; } s=s3}
 if(b=="R4"){ if(s4){ s4=0; }else{ s4=1; } s=s4}
-// console.log(s);
 
     response= await fetch(URL+"/set?relay="+b+"&state="+s);
     var status= await response.status;
     if(status==200){
-      //window.location.href = "index.html";
         api();
     }
-
 }
 </script>
 <h1>Web Relay RPi OpenWRT</h1>
-    <button onclick="button('R1')" id="b1">Click me</button>           <br>
-    <button onclick="button('R2')" id="b2">Click me</button>           <br>
-    <button onclick="button('R3')" id="b3">Click me</button>           <br>
-    <button onclick="button('R4')" id="b4">Click me</button>           <br>
+    <button onclick="button('R1')" id="b1"></button>           <br>
+    <button onclick="button('R2')" id="b2"></button>           <br>
+    <button onclick="button('R3')" id="b3"></button>           <br>
+    <button onclick="button('R4')" id="b4"></button>           <br><br>
     <button style="background:green" id="feed" onclick="runfeed()">Feed Not Running</button> <br>
 </body>
 </html>
