@@ -104,48 +104,8 @@ class pin():
 
     def __del__(self): 
         os.system("echo "+str(self._pin)+ " > /sys/class/gpio/unexport")
-        # self.cleanup()
-
-    # def __pin_operation__(self):
-    #     print("IN Operation ")
-    #     if self._state==OUTPUT:
-    #         os.system("echo " + str(self._state)  + " > /sys/class/gpio/gpio{}/value".format(str(self._pin)))
-    #                     # os.system("echo " + str(p._state)  + " > /sys/class/gpio/gpio{}/value".format(str(p._pin)))
-                
-    #         try:
-    #             gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(str(self._pin)),'w')                
-    #             if self._reverse_state:
-    #                 if self._state:
-    #                     gpio_state_file.write("0")
-    #                 else :
-    #                     gpio_state_file.write("1")
-    #             else:
-    #                 if self._state:
-    #                     gpio_state_file.write("1")
-    #                 else :
-    #                     gpio_state_file.write("0")
-    #             gpio_state_file.flush()
-    #             gpio_state_file.close()
-    #         except: 
-    #             raise fileIOError
-    #             exit()
-    #         return 0
-    #     if self._state==INPUT:
-    #         try:
-    #             gpio_state_file=open("/sys/class/gpio/gpio{}/value".format(self._pin),'r')
-    #             read_value=int(gpio_direction_file.readline())
-    #             gpio_direction_file.close()
-    #         except:
-    #             raise fileIOError
-    #             exit()
-    #         return read_value     
 
     def cleanup(self):
-        # os.system("echo "+str(self._pin)+ " > /sys/class/gpio/unexport")
-        # unexport_file = open("/sys/class/gpio/unexport",'w')
-        # unexport_file.write(str(self._pin))
-        # unexport_file.flush()
-        # unexport_file.close()
         try:
             unexport_file = open("/sys/class/gpio/unexport",'w')
             unexport_file.write(str(self._pin))
