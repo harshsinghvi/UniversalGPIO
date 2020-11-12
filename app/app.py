@@ -56,7 +56,7 @@ def set():
         return "Bad Request",400       
 @app.route('/set/<relay>/<state>',methods=['GET','POST'])
 def relay_set(relay,state):
-    if (state == 1 or state == 0) and (relay in PINS):
+    if (int(state)==1 or int(state)==0) and (relay in PINS):
         gpio[relay].write(int(state))
         relay_state[relay]=int(state)
         return "OK"
