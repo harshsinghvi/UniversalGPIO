@@ -49,16 +49,16 @@ def relay_status(relay):
 @app.route('/set',methods=['GET','POST'])
 def set():
     if 'relay' in request.args and 'state' in request.args:
-        gpio[request.args["relay"]].write(request.args['state'])
-        relay_state[request.args['relay']]=request.args['state']
+        gpio[request.args["relay"]].write(int(request.args['state']))
+        relay_state[request.args['relay']]=int(request.args['state'])
         return "OK"
     else:
         return "Bad Request",400       
 @app.route('/set/<relay>/<state>',methods=['GET','POST'])
 def relay_set(relay,state):
     if (state == 1 or state == 0) and (relay in PINS):
-        gpio[relay].write(state)
-        relay_state[relay]=state
+        gpio[relay].write(int(state))
+        relay_state[relay]=int(state)
         return "OK"
     return "Bad Request",400
 @app.route('/',methods=['GET'])
