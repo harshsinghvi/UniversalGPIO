@@ -140,16 +140,18 @@ class pin():
     #         return read_value     
 
     def cleanup(self):
-        unexport_file = open("/sys/class/gpio/unexport",'w')
-        unexport_file.write(str(self._pin))
-        unexport_file.flush()
-        unexport_file.close()
-        # try:
-        #     unexport_file = open("/sys/class/gpio/unexport",'w')
-        #     unexport_file.write(str(self._pin))
-        #     unexport_file.flush()
-        # except:
-        #     raise fileIOError
+        # unexport_file = open("/sys/class/gpio/unexport",'w')
+        # unexport_file.write(str(self._pin))
+        # unexport_file.flush()
+        # unexport_file.close()
+        try:
+            unexport_file = open("/sys/class/gpio/unexport",'w')
+            unexport_file.write(str(self._pin))
+            unexport_file.flush()
+            unexport_file.close()
+        except :
+            os.system("echo "+str(self._pin)+ " > /sys/class/gpio/unexport")
+            raise fileIOError("using os.system() to unexport the pin")
 
     def write(self,state):
         if self._mode==INPUT:
