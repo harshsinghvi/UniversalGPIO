@@ -1,5 +1,5 @@
 '''
-OpenWRT Package for Uding GPIO on OpenWRT based Firmware Routers and Network Devices
+OpenWRT Library for Uding GPIO on OpenWRT based Firmware Routers and Network Devices
 includes Modules:
  - GPIO
  - Dignostics
@@ -7,8 +7,9 @@ includes Modules:
  
 
 '''
+__version__ = "v0.0.1"
+def getVersion ():
+	return __version__
 
 print("Hello World!!")
 
-def test():
-        

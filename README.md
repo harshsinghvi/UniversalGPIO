@@ -1,6 +1,6 @@
-# OpenWRT GPIO 
+# OpenWRT.GPIO 
 
-Python Module for interfacing gpio pins on OpenWrt Firmware based Routers and Network Devices 
+Python Library for interfacing GPIO Pins on OpenWRT Firmware based Routers and Network Devices 
 
 ## Testing on:
 #### Raspberry PI 3 model B+

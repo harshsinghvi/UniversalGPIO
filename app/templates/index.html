@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Relay</title>
+    <style>
+        body {
+                color: #eee;
+                background: #121212;
+            }
+
+
+        h1   {color: white;}
+        h2  {color: red}
+        p    {color: red;}
+
+    </style>
+</head>
+
+<body>
+    <script>
+        const URL="http://openwrt.lan/";
+        var s1=0,s2=0,s3=0,s4=0;
+        var f=1;
+        const on="on";
+        const off="off";
+        const b1="Switch 1 is ";
+        const b2="Switch 2 is ";
+        const b3="Switch 3 is ";
+        const b4="Switch 4 is ";
+
+function hello(){
+    console.log("Hello World!!");
+    document.getElementById("hello").value="Hello World!!";
+}
+
+function runfeed(){
+    var url = URL+"/status";
+    if(f){
+        f=0;
+        document.getElementById("feed").innerHTML="Running Feed"
+        document.getElementById("feed").style="background:red";
+        setInterval(async function(){
+            const response =  await fetch(url);
+            var data = await  response.json();
+            s1=data["R1"];
+            s2=data["R2"];
+            s3=data["R3"];
+            s4=data["R4"];
+            if(data["R1"]){document.getElementById("b1").innerHTML=b1+on;} else { document.getElementById("b1").innerHTML=b1+off }
+            if(data["R2"]){document.getElementById("b2").innerHTML=b2+on;} else { document.getElementById("b2").innerHTML=b2+off }
+            if(data["R3"]){document.getElementById("b3").innerHTML=b3+on;} else { document.getElementById("b3").innerHTML=b3+off }
+            if(data["R4"]){document.getElementById("b4").innerHTML=b4+on;} else { document.getElementById("b4").innerHTML=b4+off }
+            console.log(data);
+
+        },1000)
+    }else{
+        window.location.href = "index.html";
+
+    }
+}
+
+async function api(){
+    var url = URL+"/status";
+    const response = await fetch(url);
+    var data = await response.json();
+
+    s1=data["R1"];
+    s2=data["R2"];
+    s3=data["R3"];
+    s4=data["R4"];
+    //document.getElementById("b1").innerHTML=data['R1'];
+    if(data["R1"]){document.getElementById("b1").innerHTML=b1+on;} else { document.getElementById("b1").innerHTML=b1+off }
+    if(data["R2"]){document.getElementById("b2").innerHTML=b2+on;} else { document.getElementById("b2").innerHTML=b2+off }
+    if(data["R3"]){document.getElementById("b3").innerHTML=b3+on;} else { document.getElementById("b3").innerHTML=b3+off }
+    if(data["R4"]){document.getElementById("b4").innerHTML=b4+on;} else { document.getElementById("b4").innerHTML=b4+off }
+    //document.getElementById("ip").innerHTML=data['IP'];
+    console.log(data);
+}
+api();
+
+function n(){
+    //document.getElementById("but1").innerHTML="xyz";
+    console.log("Hello World!!");
+    //document.getElementById("t").checked =true;
+    document.getElementById("myCheck").checked=true;
+}
+
+async function button(b){
+    var s;
+
+if(b=="R1"){ if(s1){ s1=0; }else{ s1=1; } s=s1}
+if(b=="R2"){ if(s2){ s2=0; }else{ s2=1; } s=s2}
+if(b=="R3"){ if(s3){ s3=0; }else{ s3=1; } s=s3}
+if(b=="R4"){ if(s4){ s4=0; }else{ s4=1; } s=s4}
+// console.log(s);
+
+    response= await fetch(URL+"set?relay="+b+"&state="+s);
+    var status= await response.status;
+    if(status==200){
+      //window.location.href = "index.html";
+        api();
+    }
+
+}
+</script>
+<h1>Web Relay RPi OpenWRT</h1>
+    <button onclick="button('R1')" id="b1">Click me</button>           <br>
+    <button onclick="button('R2')" id="b2">Click me</button>           <br>
+    <button onclick="button('R3')" id="b3">Click me</button>           <br>
+    <button onclick="button('R4')" id="b4">Click me</button>           <br>
+    <button style="background:green" id="feed" onclick="runfeed()">Feed Not Running</button> <br>
+</body>
+</html>
