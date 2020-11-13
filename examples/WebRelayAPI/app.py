@@ -40,7 +40,7 @@ def status():
 @app.route('/status/<relay>',methods=['GET'])
 def relay_status(relay):
     if relay in PINS:
-        return string(relay_state[relay])
+        return str(relay_state[relay])
     else:
         return "Bad Request",400
 
