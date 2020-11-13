@@ -23,3 +23,11 @@ PINS={
 - Web interface        : `http://localhost:5000/` 
 - Getting relay State  : `http://localhost:5000/status` or `http://localhost:5000/status/<RELAY>`
 - Changing Relay State : `http://localhost:5000/set/relay=R1&state=1?` or `http://localhost:5000/<relay>/<state>`
+
+
+### Configure At startup
+```bash 
+cp webrelay /etc/init.d/webrelay
+chmod +x /etc/init.d/webrelay
+/etc/init.d/webrelay enable
+```
