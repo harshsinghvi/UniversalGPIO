@@ -10,7 +10,6 @@ PINS={
     "R3": 14,
     "R4": 15
 }
-
 relay_state={
     "R1":0,
     "R2":0,
@@ -20,11 +19,11 @@ relay_state={
 gpio={}
 
 def pin_init():
-    for p in PINS:
-        gpio[p]=GPIO.setup(PINS[p],GPIO.OUTPUT,reverse_state=True,initial_state=0)
+    for pin in PINS:
+        gpio[pin]=GPIO.setup(PINS[pin],GPIO.OUTPUT,reverse_state=True,initial_state=0)
 def gpio_cleanup():
-        for p in PINS:
-            gpio[p].cleanup()
+        for pin in PINS:
+            gpio[pin].cleanup()
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -33,7 +32,6 @@ CORS(app)
 @app.route('/hello-world',methods=['GET','POST'])
 def hello_world():
     return "Hello World !!"
-
 @app.route('/status',methods=['GET'])
 def status():
     return relay_state
@@ -43,7 +41,6 @@ def relay_status(relay):
         return str(relay_state[relay])
     else:
         return "Bad Request",400
-
 @app.route('/set',methods=['GET','POST'])
 def set():
     if 'relay' in request.args and 'state' in request.args:
