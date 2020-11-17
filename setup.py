@@ -22,7 +22,7 @@ VERSION = '0.0.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    flask,flask_cors
+    'flask','flask_cors'
 ]
 
 # What packages are optional?
