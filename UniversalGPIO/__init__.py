@@ -1,10 +1,11 @@
 '''
 Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embeded Devices like Rasapberry pi and OpenWRT based Routers 
 
+Maintainer: Harsh Singhvi (@harshsinghvi)
 includes Modules:
  - GPIO
- - Dignostics
- - API Module
+ - Dignostics (To be updated Soon)
+ - API Module (To be updated Soon)
  
 
 '''
