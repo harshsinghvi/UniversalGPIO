@@ -9,9 +9,7 @@ includes Modules:
  
 
 '''
-__version__ = "v0.0.1"
-def getVersion ():
-	return __version__
 
-print("Hello World!!")
+if __name__ == '__main__':
+	print("Welcome to UniversalGPIO Package")
 
