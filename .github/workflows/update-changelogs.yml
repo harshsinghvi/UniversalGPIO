@@ -1,7 +1,7 @@
 name: Update CHANGELOG.md
 on:
   release:
-    type: published
+    type: [published]
 
 jobs:
   comment:
