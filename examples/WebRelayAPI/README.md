@@ -1,4 +1,4 @@
-# WebRelayAPI using OpenWRT.GPIO
+# WebRelayAPI using UniversalGPIO.GPIO
  
 
 ### CONFIGURE: 

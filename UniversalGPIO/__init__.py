@@ -1,5 +1,6 @@
 '''
-OpenWRT Library for Uding GPIO on OpenWRT based Firmware Routers and Network Devices
+Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embeded Devices like Rasapberry pi and OpenWRT based Routers 
+
 includes Modules:
  - GPIO
  - Dignostics

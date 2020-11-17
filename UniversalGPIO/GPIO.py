@@ -47,7 +47,7 @@ class pin():
         if mode == INPUT or mode==OUTPUT:
             self._mode=mode
         else:
-            raise invalidMode("Invalid mode Name:"+mode+"\n Use openwrtRPiGpio.INPUT or openwrtRPiGpio.OUTPUT")
+            raise invalidMode("Invalid mode Name:"+mode+"\n Use UniversalGPIO.GPIO.INPUT or UniversalGPIO.GPIO.OUTPUT")
             exit()
         if(initial_state == 0 or initial_state ==1 ):
             self._state=initial_state

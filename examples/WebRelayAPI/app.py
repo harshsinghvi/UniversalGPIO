@@ -2,7 +2,7 @@ import flask
 from flask_cors import CORS
 from flask import request, jsonify,render_template
 import os
-import OpenWRT.GPIO as GPIO
+import UniversalGPIO.GPIO as GPIO
 
 PINS={
     "R1": 2,

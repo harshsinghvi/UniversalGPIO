@@ -1,6 +1,6 @@
-# OpenWRT.GPIO 
+# UniversalGPIO 
 
-Python Library for interfacing GPIO Pins on OpenWRT Firmware based Routers and Network Devices 
+Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embeded Devices like Rasapberry pi and OpenWRT based Routers 
 
 ## Tested on:
 #### Raspberry PI 3 model B+
