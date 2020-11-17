@@ -15,9 +15,9 @@ from setuptools import find_packages, setup, Command
 NAME = 'UniversalGPIO'
 DESCRIPTION = 'Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embeded Devices like Rasapberry pi and OpenWRT based Routers.'
 URL = 'https://github.com/harshsinghvi/UniversalGPIO'
-EMAIL = 'me@harshsinghvi.com'
+EMAIL = 'root@harshsinghvi.com'
 AUTHOR = 'Harsh Singhvi'
-REQUIRES_PYTHON = '>=3.7.0'
+REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.0.1'
 
 # What packages are required for this module to be executed?
