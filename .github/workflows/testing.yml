@@ -1,4 +1,4 @@
-name: Master
+name: Testing
 
 on:
   push:
