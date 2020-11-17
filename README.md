@@ -2,7 +2,7 @@
 
 Python Library for interfacing GPIO Pins on OpenWRT Firmware based Routers and Network Devices 
 
-## Testing on:
+## Tested on:
 #### Raspberry PI 3 model B+
 - OpenWrt Version 19.07.4
 
