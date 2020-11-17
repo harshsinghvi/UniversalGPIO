@@ -1,6 +1,7 @@
 import os
 import re
 import os.path  
+import sys 
 
 INPUT="in"
 OUTPUT="out"
@@ -43,17 +44,17 @@ class pin():
             self._pin=pin+self._base
         else:
             raise invalidPinNumber(str(pin)+" is invalid pin Number ")
-            exit()
+            sys.exit()
         if mode == INPUT or mode==OUTPUT:
             self._mode=mode
         else:
             raise invalidMode("Invalid mode Name:"+mode+"\n Use UniversalGPIO.GPIO.INPUT or UniversalGPIO.GPIO.OUTPUT")
-            exit()
+            sys.exit()
         if(initial_state == 0 or initial_state ==1 ):
             self._state=initial_state
         else:
             raise invalidState("State can either be 1 / 0 or True / False ")
-            exit()
+            sys.exit()
         if reverse_state == True or reverse_state ==False:
             self._reverse_state=reverse_state
         else: 
@@ -62,7 +63,7 @@ class pin():
             self.__gpio__init__()
         except: 
             raise invalidPinNumber("Check the pin Number for your specific Model/Device")
-            exit()
+            sys.exit()
 
     def __gpio__init__(self):
         try:
@@ -82,7 +83,7 @@ class pin():
             self.__gpio__init__()
         except:
             raise fileIOError
-            exit()
+            sys.exit()
         if self._mode == OUTPUT:
             self.write(self._state)
         else:
@@ -137,10 +138,10 @@ class pin():
                 gpio_state_file.close()
             except: 
                 raise fileIOError
-                exit()
+                sys.exit()
         else:
             raise invalidState("State can either be 1 / 0 or True / False ")
-            exit()
+            sys.exit()
 
     def high(self):
         return self.write(HIGH)
@@ -151,7 +152,7 @@ class pin():
     def state(self):
         if self._mode==INPUT:
             raise illegalUseOfClassMethod("The Pin is set INPUT")
-            exit()
+            sys.exit()
         return self._state
 
     def read(self):

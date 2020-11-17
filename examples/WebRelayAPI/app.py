@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask import request, jsonify,render_template
 import os
 import UniversalGPIO.GPIO as GPIO
+import sys
 
 PINS={
     "R1": 2,
@@ -65,4 +66,4 @@ if __name__ == '__main__':
         pin_init()
         app.run(host="0.0.0.0",port=5000)
     except KeyboardInterrupt:
-        exit()
+        sys.exit()
