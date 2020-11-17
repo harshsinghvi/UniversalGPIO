@@ -138,4 +138,5 @@ dmypy.json
 cython_debug/
 
 # VSCODE
-.vscoode/
+.vscode
+linkedinpost
