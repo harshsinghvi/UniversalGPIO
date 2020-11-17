@@ -9,6 +9,10 @@ includes Modules:
  
 
 '''
+__version__ = "0.0.1"
+
+def version():
+	return __version__
 
 if __name__ == '__main__':
 	print("Welcome to UniversalGPIO Package")
