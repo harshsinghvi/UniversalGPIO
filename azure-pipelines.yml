@@ -13,7 +13,6 @@ strategy:
     Python36:
       python.version: '3.6'
 
-
 steps:
 - task: UsePythonVersion@0
   inputs:
@@ -31,7 +30,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    targetFolder: $(Build.ArtifactStagingDirectory)
+    targetFolder: $(Build.ArtifactStagingDirectory)/dist
 
 - task: PublishBuildArtifacts@1
   inputs:
