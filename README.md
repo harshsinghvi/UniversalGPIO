@@ -23,6 +23,7 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 - [GPIO Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/GPIO.md)
 - [API Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/API.md) 🏗️ (To be Updated Soon)
 - [Dignostics and Troubleshooting  Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/dignostics.md) 🚧 (To be Updated Soon)
+- [Examples](https://github.com/harshsinghvi/UniversalGPIO/tree/master/examples)
 
 ## 💽 Installation (Stable Version)
 
