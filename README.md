@@ -47,7 +47,7 @@ bumpversion --current-version 1.0.0 minor setup.py UniversalGPIO/__init__.py ## 
 
 ## 🛠️ Tested on
 
-### Raspberry PI 3 model B+
+### Raspberry PI 3 Model B+
 
 - OpenWrt Version 19.07.4
 
