@@ -23,9 +23,10 @@ The latest stable version is available on PyPI. Either add `UniversalGPIO` to yo
 ```bash
 git clone https://github.com/harshsinghvi/UniversalGPIO
 cd UniversalGPIO
-pip3 install -r dev_requirements.txt
+pip install --upgrade pip
+pip install -r dev_requirements.txt
 
-python3 setup.py sdist bdist_wheel ## to build the Package
+python setup.py sdist bdist_wheel ## to build the Package
 pip install dist/UniversalGPIO-x.x.x-py3-none-any.whl ## install the package
 
 bumpversion --current-version 1.0.0 minor setup.py UniversalGPIO/__init__.py ## Versioning
