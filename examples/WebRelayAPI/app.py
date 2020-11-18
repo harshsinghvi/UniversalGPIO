@@ -10,12 +10,14 @@ PINS = {
     "R3": 14, 
     "R4": 15
 }
+
 relay_state = {
     "R1":0, 
     "R2":0, 
     "R3":0, 
     "R4":0, 
 }
+
 gpio = {}
 
 def pin_init():
