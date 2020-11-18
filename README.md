@@ -18,12 +18,13 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 
 ## 📔 [Documentation](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/README.md)
 
+## 💻 [Examples](https://github.com/harshsinghvi/UniversalGPIO/tree/master/examples)
+
 ### This Package includes
 
 - [GPIO Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/GPIO.md)
 - [API Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/API.md) 🏗️ (To be Updated Soon)
 - [Dignostics and Troubleshooting  Module](https://github.com/harshsinghvi/UniversalGPIO/blob/master/docs/dignostics.md) 🚧 (To be Updated Soon)
-- [Examples](https://github.com/harshsinghvi/UniversalGPIO/tree/master/examples)
 
 ## 💽 Installation (Stable Version)
 
@@ -35,7 +36,7 @@ Or install from Releases:
 
 `pip install https://github.com/harshsinghvi/UniversalGPIO/releases/download/v1.0.2/UniversalGPIO-1.0.2-py3-none-any.whl`
 
-## 💻 Development
+## 🛠️ Development
 
 - Directly from source (fork or clone my repo)
 
@@ -75,7 +76,7 @@ bumpversion --current-version 1.0.0 minor setup.py UniversalGPIO/__init__.py ## 
 [3]: http://www.github.com/harshsinghvi
 [4]: https://www.linkedin.com/in/harsh-singhvi/
 
-## 🛠️ Tested on
+## ⚙️ Tested on
 
 ### Raspberry PI 3 Model B+
 
