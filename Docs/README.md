@@ -1,4 +1,4 @@
-# UniversalGPIO 
+# UniversalGPIO
 
 Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embedded Devices like Raspberry pi and OpenWRT based Routers.
 

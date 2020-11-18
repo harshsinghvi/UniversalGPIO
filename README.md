@@ -31,7 +31,7 @@ OPENWRT_DEVICE_REVISION="v0"
 OPENWRT_RELEASE="OpenWrt 19.07.4 r11208-ce6496d796"
 ```
 
-## [Doccumentation](Docs/doccumentation.md)
+## [Doccumentation](Docs/README.md)
 
 ### This Package includes
 
