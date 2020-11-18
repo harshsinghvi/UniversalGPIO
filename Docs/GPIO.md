@@ -4,7 +4,7 @@ Universal Module to comminucating to GPIO Pins of Any kind Supported Device (Lin
 
 ## ➕ Creating A GPIO Pin Object
 
-To communicate with the GPIO Pins on your Device, you first need to instantiate a Pin. The easiest way to do that is by calling the function setup(). It can also be configured manually by instantiating a Pin class
+To communicate with the GPIO Pins on your Device, you first need to instantiate a Pin. The easiest way to do that is by calling the function setup(). It can also be configured manually by instantiating a Pin class.
 
 ### 📌 setup()
 
@@ -26,7 +26,7 @@ To communicate with the GPIO Pins on your Device, you first need to instantiate 
     1. `UniversalGPIO.GPIO.LOW`    - For off/0
     1. `UniversalGPIO.GPIO.OFF`    - For off/0
 
-- **reverse_state** (bool) - *Default:*`False` Set True if you want to reverse the output state. *Only if the mode is output else it will be ignored*
+- **reverse_state** (bool) - *Default:*`False` Set True if you want to reverse the output state. *Only if the mode is output else it will be ignored*.
 
 **Example:**
 
@@ -83,7 +83,7 @@ To communicate with the GPIO Pins on your Device, you first need to instantiate 
     1. `UniversalGPIO.GPIO.LOW`    - For off/0
     1. `UniversalGPIO.GPIO.OFF`    - For off/0
 
-- **reverse_state** (bool) - *Default:*`False` Set True if you want to reverse the output state. *Only if the mode is output else it will be ignored*
+- **reverse_state** (bool) - *Default:*`False` Set True if you want to reverse the output state. *Only if the mode is output else it will be ignored*.
 
 #### write()
 
