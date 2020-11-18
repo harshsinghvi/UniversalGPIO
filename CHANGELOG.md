@@ -16,7 +16,7 @@
 
 # Stable Release v1.0.2
 
-> @harshsinghvi harshsinghvi released this · 6 commits to master since this release.
+> @harshsinghvi harshsinghvi released this.
 
 ## 🎉 Changes
 
@@ -24,9 +24,13 @@
 
 - ✅ Optimised GPIO Module
 
-# Stable Release v1.0.1
+# UniversalGPIO First Release !! v1.0.1
 
-> Beta Testing
+> harshsinghvi released this.
+
+Welcome !!
+
+Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embedded devices like Raspberry pi and OpenWRT based Routers.
 
 # Stable Release v1.0.0
 
