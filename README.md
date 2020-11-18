@@ -6,9 +6,9 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 
 ### This Package includes
 
-- [GPIO Module](docs/GPIO.md)
-- [API Module](docs/API.md) (To be Updated Soon)
-- [Dignostics and Troubleshooting  Module](docs/Dignostics.md) (To be Updated Soon)
+- [GPIO Module](Docs/GPIO.md)
+- [API Module](Docs/API.md) (To be Updated Soon)
+- [Dignostics and Troubleshooting  Module](Docs/Dignostics.md) (To be Updated Soon)
 
 ## 💽 Installation (Stable Version)
 
