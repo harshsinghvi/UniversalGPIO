@@ -12,7 +12,7 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 
 ## 💽 Installation (Stable Version)
 
-The latest stable version is available on [PyPI](pypi.org/project/universalgpio/). Either add `UniversalGPIO` to your requirements.txt file or install with pip:
+The latest stable version is available on [PyPI](https://pypi.org/project/universalgpio/). Either add `UniversalGPIO` to your requirements.txt file or install with pip:
 
 `pip install UniversalGPIO`
 
