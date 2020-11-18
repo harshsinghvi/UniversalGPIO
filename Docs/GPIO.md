@@ -2,11 +2,11 @@
 
 Universal Module to comminucating to GPIO Pins of Any kind Supported Device (Linux Kernel and GPIO Pins on Harware). This Module enables us to Interface with the GPIO Pins of devices and gives the code reusability between Different Devices.
 
-## Creating A GPIO Pin Object
+## ➕ Creating A GPIO Pin Object
 
 To communicate with the GPIO Pins on your Device, you first need to instantiate a Pin. The easiest way to do that is by calling the function setup(). It can also be configured manually by instantiating a Pin class
 
-### setup()
+### 📌 setup()
 
 > Return a Pin configured to Communicate with the GPIO Pin with the correspondning parameters.
 
@@ -52,9 +52,7 @@ To communicate with the GPIO Pins on your Device, you first need to instantiate 
 - `UniversalGPIO.GPIO.IN`
 - `UniversalGPIO.GPIO.OUT`
 
-
-
-## Pin Reference
+## 📍 Pin Reference
 
 ### *class* Pin
 

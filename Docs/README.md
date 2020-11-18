@@ -1,4 +1,4 @@
-# UniversalGPIO
+# 🔮 UniversalGPIO
 
 Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embedded Devices like Raspberry pi and OpenWRT based Routers.
 
@@ -8,13 +8,13 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 - [Getting Started](##Getting-Started)
 - [GPIO Module](GPIO.md)
 
-## Installation
+## 💽 Installation
 
 The latest stable version is available on PyPI. Either add `UniversalGPIO` to your requirements.txt file or install with pip:
 
 `pip install UniversalGPIO`
 
-## Getting Started
+## 🔰 Getting Started
 
 You can interface with GPIO Pins on the supported devices. You can use the `setup()` method in the GPIO Module.
 
