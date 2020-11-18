@@ -34,12 +34,11 @@ class fileIOError(Exception):
 class illegalUseOfClassMethod(Exception):
     pass
 
-class pin():
+class Pin():
     ## _pin _mode _state _reverse_state _initial_state 
 
-    def __init__(self,pin,mode,initial_state=0,reverse_state=False):  # check pin status and availability 
+    def __init__(self, pin, mode, initial_state=0, reverse_state=False):  # check pin status and availability 
         self.__system__init__()
-
         if type(pin)==type(0):
             self._pin=pin+self._base
         else:
@@ -136,6 +135,7 @@ class pin():
                         gpio_state_file.write("0")
                 gpio_state_file.flush()
                 gpio_state_file.close()
+                return 0
             except: 
                 raise fileIOError
                 sys.exit()
@@ -169,5 +169,4 @@ class pin():
 
 
 def setup(gpio_pin, mode,initial_state=0,reverse_state=False):
-    return pin(gpio_pin,mode,initial_state,reverse_state)
-    
+    return Pin(gpio_pin,mode,initial_state,reverse_state)
