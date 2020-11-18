@@ -8,7 +8,4 @@ while(i<10):
     sleep(0.5)
     pin.write(0)
     i+=1
-
-
 pin.cleanup()
-
