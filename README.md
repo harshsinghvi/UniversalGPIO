@@ -1,8 +1,8 @@
-# UniversalGPIO
+# 🔮 UniversalGPIO
 
 Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices, and embedded Devices like Raspberry pi and OpenWRT based Routers.
 
-## [Doccumentation](Docs/README.md)
+## 📔 [Doccumentation](Docs/README.md)
 
 ### This Package includes
 
@@ -10,7 +10,7 @@ Python Library for interfacing GPIO Pins on Linux based Routers, Network Devices
 - API Module (To be Updated Soon)
 - Dignostics and Troubleshooting  Module (To be Updated Soon)
 
-## Installation (Stable Version)
+## 💽 Installation (Stable Version)
 
 The latest stable version is available on PyPI. Either add `UniversalGPIO` to your requirements.txt file or install with pip:
 
@@ -20,7 +20,7 @@ Or install from Releases:
 
 `pip install https://github.com/harshsinghvi/UniversalGPIO/releases/download/v1.0.2/UniversalGPIO-1.0.2-py3-none-any.whl`
 
-## Development
+## 💻 Development
 
 - Directly from source (fork or clone my repo)
 
@@ -36,7 +36,7 @@ pip install dist/UniversalGPIO-x.x.x-py3-none-any.whl ## install the package
 bumpversion --current-version 1.0.0 minor setup.py UniversalGPIO/__init__.py ## Versioning
 ```
 
-## Tested on
+## 🛠️ Tested on
 
 ### Raspberry PI 3 model B+
 
@@ -65,10 +65,10 @@ OPENWRT_DEVICE_REVISION="v0"
 OPENWRT_RELEASE="OpenWrt 19.07.4 r11208-ce6496d796"
 ```
 
-## Refrences
+## 📜 Refrences
 
 - [https://openwrt.org/docs/techref/hardware/port.gpio](https://openwrt.org/docs/techref/hardware/port.gpio)
 
-## Contributors
+## 📝 Contributors
 
-- [Harsh Singhvi](https://harshsinghvi.com)
+### 👨‍💻[Harsh Singhvi](https://harshsinghvi.com)
