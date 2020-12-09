@@ -15,7 +15,7 @@ def gpiocontroll(pin, mode, state=0):
             state = 1
         else: 
             state = 0
-    temp=Pin(pin,mode,state)
+    system("./script/gpiocontroll {} {} {}".format(pin, mode, state))
     
 def unexport(pin):
     system("echo "+str(pin)+ " > /sys/class/gpio/unexport")
@@ -28,10 +28,3 @@ def blink_one_buy_one(delay_time, start=None, end=None):
 
 def blink_all(start, end):
     system("./scripts/pin_discovery_blink-all.sh {} {}".format(start, end))
-    
-def gpiocontroll():
-    pass
-
-def gpiocontroll():
-    pass
-
