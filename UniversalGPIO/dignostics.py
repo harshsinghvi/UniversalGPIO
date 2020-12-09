@@ -5,7 +5,7 @@ from time import sleep
 modes = ['out','output','in','input']
 states= ['on', 'off', 1, 0, 'high', 'low']
 
-def gpiocontroll(pin, mode, state=0):
+def gpiocontrol(pin, mode, state=0):
     if mode not in modes:
         raise InvalidMode("allowed_modes =['out','output','in','input']")
     if state not in states:
@@ -15,7 +15,7 @@ def gpiocontroll(pin, mode, state=0):
             state = 1
         else: 
             state = 0
-    system("./scripts/gpiocontroll.sh {} {} {}".format(pin, mode, state))
+    system("./scripts/gpiocontrol.sh {} {} {}".format(pin, mode, state))
     
 def unexport(pin):
     system("echo "+str(pin)+ " > /sys/class/gpio/unexport")
