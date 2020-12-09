@@ -15,7 +15,7 @@ def gpiocontroll(pin, mode, state=0):
             state = 1
         else: 
             state = 0
-    system("./script/gpiocontroll {} {} {}".format(pin, mode, state))
+    system("./scripts/gpiocontroll.sh {} {} {}".format(pin, mode, state))
     
 def unexport(pin):
     system("echo "+str(pin)+ " > /sys/class/gpio/unexport")
