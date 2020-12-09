@@ -11,7 +11,7 @@ def gpiocontroll(pin, mode, state=0):
     if state not in states:
         raise InvalidMode("allowed_STATES =['on', 'off', 1, 0, 'high', 'low']")
     else:
-        if state in ['on', 1, 'high']
+        if state in ['on', 1, 'high']:
             state = 1
         else: 
             state = 0
