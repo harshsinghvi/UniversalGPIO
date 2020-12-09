@@ -31,4 +31,5 @@ PINS = {
 cp webrelay /etc/init.d/webrelay
 chmod +x /etc/init.d/webrelay
 /etc/init.d/webrelay enable
+/etc/init.d/webrelay start
 ```
